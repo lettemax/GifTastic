@@ -16,17 +16,28 @@
 
 #gifs-div {
     padding: auto;
+    margin: auto;
 }
 
 .gif {
-    max-height: 300px;
-    max-width: 300px;
-    padding: 10px; 
-    margin: 10px;
+    max-height: 260px;
+    max-width: 260px;
+    padding: 5px; 
+    margin: 5px;
 }
 
-.gif:hover {
-    border: 3px;
-    border-color: black;
-    border-style: dotted;
+.gif-div {
+    float: left;
+    max-height: 280px;
+    max-width: 280px;
+    padding: 5px;
+    margin: 15px;
 }
+
+p {
+    padding: auto;
+    margin: auto;
+}
+
+
+

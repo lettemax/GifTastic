@@ -52,8 +52,16 @@ function addGifs (result) {
         gif.attr("data-animated", animatedSrc);
         // Add and set data-state attribute
         gif.attr("data-state", "still");
+        // Create div element and assign to div variable
+        var div = $("<div>");
+        // Add class to div
+        div.addClass("gif-div");
+        // Add gif to gif-div
+        div.append(gif);
+        // Add gif's rating to div
+        div.prepend($("<p>"+result.data[i].rating+"</p>"));
         // Append the div to the gifs div
-        $(".gifs-div").append(gif);
+        $(".gifs-div").append(div);
     }
 }
 
@@ -81,7 +89,8 @@ $(document).ready( function () {
         // Log message to know btn btn-info was clicked
         console.log("clicked topic button");
         // Empty gifs div
-        $("#gifs-div").empty();
+        $(".gif-div").empty();
+        console.log("emptying gifs-div");
         // Log the topic on button
         console.log($(this)[0].innerHTML);
         // Set topic to search topic variable
@@ -99,7 +108,7 @@ $(document).ready( function () {
         });
     });
     // When user clicks a gif
-    $(".gif").click(function(){
+    $(".gif-div").on("click", function(){
         // Log to know gif was clicked 
         console.log($(this)+" was clicked");
         // Assign data-state of gif to variable state
