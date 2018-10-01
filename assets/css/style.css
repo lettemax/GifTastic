@@ -17,6 +17,8 @@
 #gifs-div {
     padding: auto;
     margin: auto;
+    width: 95%;
+    height: 95%;
 }
 
 .gif {
@@ -38,6 +40,78 @@ p {
     padding: auto;
     margin: auto;
 }
+
+@media screen and (max-width: 980px) {
+    #gifs-div {
+        padding: auto;
+        margin: auto;
+        width: 95%;
+        height: 95%;
+    }
+    
+    .gif {
+        max-height: 260px;
+        max-width: 260px;
+        padding: auto; 
+        margin: auto;
+    }
+    
+    .gif-div {
+        float: left;
+        max-height: 280px;
+        max-width: 280px;
+        padding: auto;
+        margin: auto;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    #gifs-div {
+        padding: auto;
+        margin: auto;
+        width: 95%;
+        height: 95%;
+    }
+    
+    .gif {
+        max-height: 260px;
+        max-width: 260px;
+        padding: auto; 
+        margin: auto;
+    }
+    
+    .gif-div {
+        float: left;
+        max-height: 280px;
+        max-width: 280px;
+        padding: auto;
+        margin: auto;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    #gifs-div {
+        padding: auto;
+        margin: auto;
+        width: 95%;
+        height: 95%;
+    }
+    
+    .gif {
+        max-height: 260px;
+        max-width: 260px;
+        padding: auto; 
+        margin: auto;
+    }
+    
+    .gif-div {
+        float: left;
+        max-height: 280px;
+        max-width: 280px;
+        padding: auto;
+        margin: auto;
+    }
+  }
 
 
 

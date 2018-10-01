@@ -39,7 +39,7 @@ function addGifs (result) {
         // Assign original still url to variable
         var stillSrc = result.data[i].images.original_still.url;
         // Assign animated gif url to variable
-        var animatedSrc = result.data[i].bitly_gif_url;
+        var animatedSrc = result.data[i].images.original.url;
         // Create an img element and assign it to img variable
         var gif = $("<img>");
         // Add class to gif element
@@ -85,11 +85,12 @@ $(document).ready( function () {
         addAllTopicsButtons();
     });
     // When user clicks a topic button
-    $(".btn-info").on("click", function(){
+    $(document).on("click", ".btn-info", function(){
         // Log message to know btn btn-info was clicked
-        console.log("clicked topic button");
-        // Empty gifs div
-        $(".gif-div").empty();
+        // Empty gifs-div
+        $(".gifs-div").empty();
+        // Empty gif-divs
+        $(".gif-div").empty(); 
         console.log("emptying gifs-div");
         // Log the topic on button
         console.log($(this)[0].innerHTML);
@@ -108,20 +109,21 @@ $(document).ready( function () {
         });
     });
     // When user clicks a gif
-    $(".gif-div").on("click", function(){
-        // Log to know gif was clicked 
-        console.log($(this)+" was clicked");
-        // Assign data-state of gif to variable state
+    $(document).on("click", ".gif", function(){
+        console.log("Come on man work!")
+        //Log to know gif was clicked 
+        console.log($(this));
+        //Assign data-state of gif to variable state
         var state = $(this).attr("data-state");
         // If data-state of gif is still, change to animated, and vice versa
         if (state=="still") {
             $(this).attr("data-state", "animated");
-            $(this).attr("src", $(this).attr("data-animated"));
-            console.log($(this).attr("data-state"));
+            $(this).attr("src", $(this)[0].dataset.animated);
+            console.log($(this)[0].dataset.animated);
         } else if (state=="animated") {
             $(this).attr("data-state", "still");
-            $(this).attr("src", $(this).attr("data-still"));
-            console.log($(this).attr("data-state"));
+            $(this).attr("src", $(this)[0].dataset.still);
+            console.log($(this)[0].dataset.still);
         }
     });
 });
