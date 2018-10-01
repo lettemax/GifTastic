@@ -35,19 +35,26 @@ function addGifs (result) {
     // Loop through all gifs in response and create gif element for each
     for (var i=0; i<result.data.length; i++) {
         // Log the passed gifs' original still urls
-        console.log(result.data[i].images.original_still.url);
-        // Assign originial still url to variable
+        console.log("adding "+result.data[i].images.original_still.url);
+        // Assign original still url to variable
         var stillSrc = result.data[i].images.original_still.url;
+        // Assign animated gif url to variable
+        var animatedSrc = result.data[i].bitly_gif_url;
         // Create an img element and assign it to img variable
-        var gif = $("<img src'"+stillSrc+"'>");
+        var gif = $("<img>");
         // Add class to gif element
         gif.addClass("gif");
         // Set src attribute to stillSrc
         gif.attr("src", stillSrc);
-        // Add img to gifs-div
-        $("#gifs-div").append(gif);
+        // Add and set data-still attribute 
+        gif.attr("data-still", stillSrc);
+        // Add and set data-animated attribute
+        gif.attr("data-animated", animatedSrc);
+        // Add and set data-state attribute
+        gif.attr("data-state", "still");
+        // Append the div to the gifs div
+        $(".gifs-div").append(gif);
     }
-
 }
 
 // When document is ready
@@ -73,6 +80,8 @@ $(document).ready( function () {
     $(".btn-info").on("click", function(){
         // Log message to know btn btn-info was clicked
         console.log("clicked topic button");
+        // Empty gifs div
+        $("#gifs-div").empty();
         // Log the topic on button
         console.log($(this)[0].innerHTML);
         // Set topic to search topic variable
@@ -90,10 +99,21 @@ $(document).ready( function () {
         });
     });
     // When user clicks a gif
-    $(".gif").on("click", function(){
+    $(".gif").click(function(){
         // Log to know gif was clicked 
         console.log($(this)+" was clicked");
-        // 
-    })
+        // Assign data-state of gif to variable state
+        var state = $(this).attr("data-state");
+        // If data-state of gif is still, change to animated, and vice versa
+        if (state=="still") {
+            $(this).attr("data-state", "animated");
+            $(this).attr("src", $(this).attr("data-animated"));
+            console.log($(this).attr("data-state"));
+        } else if (state=="animated") {
+            $(this).attr("data-state", "still");
+            $(this).attr("src", $(this).attr("data-still"));
+            console.log($(this).attr("data-state"));
+        }
+    });
 });
 

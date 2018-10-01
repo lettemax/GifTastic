@@ -24,3 +24,9 @@
     padding: 10px; 
     margin: 10px;
 }
+
+.gif:hover {
+    border: 3px;
+    border-color: black;
+    border-style: dotted;
+}
